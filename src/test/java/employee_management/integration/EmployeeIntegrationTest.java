@@ -1,7 +1,6 @@
 package employee_management.integration;
 
 import employee_management.dto.AuthRequest;
-import employee_management.dto.AuthResponse;
 import employee_management.dto.EmployeeRequest;
 import employee_management.entity.Employee;
 import employee_management.repository.EmployeeRepository;
@@ -15,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 
@@ -26,6 +27,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class EmployeeIntegrationTest {
+
+    @MockitoBean
+    private ClientRegistrationRepository clientRegistrationRepository;
 
     @Autowired
     private MockMvc mockMvc;
